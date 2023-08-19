@@ -1,11 +1,14 @@
 import React from "react";
-import Question from "../Question/Question";
+import { useNavigate } from "react-router-dom";
+import Question from "../components/Question";
 import he from "he";
 
 const QuestionsPage = (props) => {
 	const [questions, setQuestions] = React.useState([]);
 	const [score, setScore] = React.useState(null);
 	const [isGameOver, setIsGameOver] = React.useState(false);
+
+	const navigate = useNavigate();
 
 	const shuffleArray = (array) => {
 		for (let i = array.length - 1; i > 0; i--) {
@@ -91,51 +94,55 @@ const QuestionsPage = (props) => {
 		question.answersArray.some((answer) => answer.isSelected)
 	);
 
-	return (
-		<>
-			{questions.length > 0 ? (
-				<section className="questions-page">
-					{questions.map((question, index) => (
-						<Question
-							key={index}
-							questionIndex={index}
-							question={question.question}
-							correctAnswer={question.correct_answer}
-							incorrectAnswers={question.incorrect_answers}
-							answersArray={question.answersArray}
-							selectAnswer={selectAnswer}
-							isGameOver={isGameOver}
-						/>
-					))}
-					<div className="answers-footer">
-						{score !== null && (
-							<p className="score-text">
-								You scored {score}/{props.numOfQuestions}{" "}
-								correct answers
-							</p>
-						)}
-						{isGameOver ? (
-							<button
-								className="answers-btn btn"
-								onClick={resetGame}
-							>
-								Play Again
-							</button>
-						) : (
-							<button
-								className="btn answers-btn"
-								disabled={!allQuestionsAnswered}
-								onClick={checkAnswers}
-							>
-								Check answers
-							</button>
-						)}
-					</div>
-				</section>
-			) : (
-				<p>Loading...</p>
-			)}
-		</>
+	return questions.length > 0 ? (
+		<section className="questions-page">
+			<div className="questions-container">
+				{questions.map((question, index) => (
+					<Question
+						key={index}
+						questionIndex={index}
+						question={question.question}
+						correctAnswer={question.correct_answer}
+						incorrectAnswers={question.incorrect_answers}
+						answersArray={question.answersArray}
+						selectAnswer={selectAnswer}
+						isGameOver={isGameOver}
+					/>
+				))}
+				<div className="results-container">
+					{score !== null && (
+						<p className="score-text">
+							You scored {score}/{props.numOfQuestions} correct
+							answers
+						</p>
+					)}
+					{isGameOver ? (
+						<button className="btn answers-btn" onClick={resetGame}>
+							Play Again
+						</button>
+					) : (
+						<button
+							className="btn answers-btn"
+							disabled={!allQuestionsAnswered}
+							onClick={checkAnswers}
+						>
+							Check answers
+						</button>
+					)}
+					<button
+						className="btn reset-btn"
+						onClick={() => {
+							resetGame();
+							navigate("/");
+						}}
+					>
+						Return to Quiz Settings
+					</button>
+				</div>
+			</div>
+		</section>
+	) : (
+		<p className="loading-text">Loading...</p>
 	);
 };
 

@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import TitlePage from "./Components/TitlePage/TitlePage";
-import QuestionsPage from "./Components/QuestionsPage/QuestionsPage";
+import Layout from "./components/Layout";
+import TitlePage from "./pages/TitlePage";
+import QuestionsPage from "./pages/QuestionsPage";
 
 const App = () => {
-	const [currentPage, setCurrentPage] = React.useState("title-page");
 	const [numOfQuestions, setNumOfQuesetions] = React.useState("5");
 	const [difficulty, setDifficulty] = React.useState("");
 	const [category, setCategory] = React.useState("");
@@ -21,33 +21,34 @@ const App = () => {
 		setCategory(category);
 	}
 
-	function changePage(Component) {
-		setCurrentPage(Component);
-	}
-
-	let selectedPage;
-	if (currentPage === "title-page") {
-		selectedPage = (
-			<TitlePage
-				changeNumOfQuestions={changeNumOfQuestions}
-				changeDifficulty={changeDifficulty}
-				changeCategory={changeCategory}
-				changePage={(Component) => {
-					changePage(Component);
-				}}
-			/>
-		);
-	} else if (currentPage === "questions-page") {
-		selectedPage = (
-			<QuestionsPage
-				numOfQuestions={numOfQuestions}
-				difficulty={difficulty}
-				category={category}
-			/>
-		);
-	}
-
-	return <main id="main">{selectedPage}</main>;
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<Layout />}>
+					<Route
+						index
+						element={
+							<TitlePage
+								changeNumOfQuestions={changeNumOfQuestions}
+								changeDifficulty={changeDifficulty}
+								changeCategory={changeCategory}
+							/>
+						}
+					/>
+					<Route
+						path="questions"
+						element={
+							<QuestionsPage
+								numOfQuestions={numOfQuestions}
+								difficulty={difficulty}
+								category={category}
+							/>
+						}
+					/>
+				</Route>
+			</Routes>
+		</BrowserRouter>
+	);
 };
 
 export default App;

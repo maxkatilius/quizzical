@@ -1,75 +1,104 @@
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
     height: 100vh;
-    padding: 0;
-    margin: 0;
     color: #293264;
     background-color: #f5f7fb;
     font-family: "Karla", sans-serif;
 }
 
-.title-page,
-.questions-page {
-    height: 100vh;
-    padding: 2em;
+.site-container {
+    min-height: 100vh;
+    height: auto;
+    padding: 1.4em;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: 2em;
     background-image: 
-        url(../assets/images/blob-yellow.png),
-        url(../assets/images/blob-blue.png);
+    url(../assets/images/blob-yellow.png),
+    url(../assets/images/blob-blue.png);
     background-repeat: no-repeat;
     background-size: auto, auto;
-    background-position: 300% -22%, -50% 112%;
+    background-position: 400% -27%, -60% 115%;
+    background-attachment: fixed, fixed;
+}
+
+header a {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+header a:visited {
+    color: #293264;
+}
+
+/*****************
+*** TITLE PAGE ***
+******************/
+
+.quiz-form {
+    margin: auto auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 .title {
-    /* margin-top: -5em; */
+    margin-bottom: 0.8em;
+    font-size: 2.6rem;
     font-weight: 800;
-    font-size: 2rem;
     letter-spacing: 0.05em;
 }
 
 .subtitle {
-    margin: 0;
-    padding: 0;
     font-family: "Inter", sans-serif;
     font-size: 1.2rem;
     font-weight: 400;
 }
 
-.quizSettings {
-    margin: 2em;
+.quiz-settings {
+    margin: 2em 0.5em;
     display: flex;
     flex-direction: column;
-    gap: 1.1em;
+    gap: 1em;
+    font-size: 1.2rem;
+}
+
+.select-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    font-size: 1.2rem;
 }
 
 select {
-    width: 80px;
+    font-size: 1rem;
     text-align: right;
     cursor: pointer;
 }
 
-.selectContainer {
-    display: flex;
-    justify-content: space-between;
+select#difficulty, 
+select#category {
+    width: 45%;
 }
 
 .btn {
-    padding: 1em 2.7em;
     font-family: "Inter", sans-serif;
-    font-size: 1.2rem;
     font-weight: 600;
     color: #f5f7fb;
     background-color: #4d5b9e;
     border: none;
-    border-radius: 26px;
+    border-radius: 30px;
     transition: 0.3s;
     cursor: pointer;
 }
@@ -84,35 +113,81 @@ button:disabled {
     cursor: not-allowed;
 }
 
-/***************
- questions page 
- **************/
+.start-btn {
+    padding: 1em 1.8em;
+    margin-top: 0.5em;
+    font-size: 1.5rem;
+}
+
+.reset-btn {
+    padding: 1em;
+    position: absolute;
+    top: 1em;
+    right: 1.2em;
+    font-size: 0.8rem;
+}
+
+.answers-btn {
+    padding: 1.4em 2em;
+    margin-top: 0.8em;
+    font-size: 1rem;
+}
+
+/*********************
+*** QUESTIONS PAGE ***
+*********************/
+
 
 .questions-page {
-    width: 60%;
+    height: 100%;
+    padding: 0 0.8em;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+.loading-text {
+    margin: auto;
+    font-size: 2rem;
+}
+
+.questions-container {
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
 
 .question-container {
-    padding-bottom: 1.5em;
+    padding-bottom: 1em;
     border-bottom: 0.8px solid #dbdef0;
 }
 
-.answers {
+.question-text {
+    padding: 0.8em 0;
+    font-size: 1rem;
+}
+
+.answers-container {
     display: flex;
-    gap: 1.5em;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 1em;
+    width: 100%;
     text-align: center;
+    font-size: 0.8rem;
 }
 
 .answer {
-    padding: 0.4em 2.1em;
+    padding: 0.5em 0.8em;
+    max-width: calc(50% - 1em); /* 1em accounts for space between answers */
+    min-width: 20%;
     display: flex;
     align-items: center;
+    justify-content: center;
     font-family: "Inter", sans-serif;
     font-weight: 500;
     border: 0.8px solid #4d5b9e;
-    border-radius: 20px;
+    border-radius: 15px;
     cursor: pointer;
 }
 
@@ -123,7 +198,7 @@ button:disabled {
 
 .correct-answer {
     background: #94d7a2;
-    border: none;align-items: center;
+    border: none;
 }
 
 .unselected-incorrect-answer {
@@ -136,66 +211,80 @@ button:disabled {
     opacity: 0.5;
 }
 
-/*************
-*** footer ***
-*************/
-
-.answers-footer {
-    margin-top: 1.5em;
+.results-container {
+    margin-top: 0.5em;
     display: flex;
+    flex-direction: column;
+    gap: 0.5em;
     justify-content: center;
     align-items: center;
 }
 
-.answers-btn {
-    margin-left: 2.3em;
-    padding: 1em 2.2em;
-    font-size: 1.2rem;
-}
-
 .score-text {
+    margin: 0.3em 0;
     font-size: 1.2rem;
 }
 
-@media (min-width: 800px) {
+/* For portrait tablets */
+@media screen and (min-width: 600px) {
     html {
         font-size: 1.2rem;
     }
 
-    .title-page,
-    .questions-page {
-        /* background: red; */
-        background-size: 75%;
-        background-position: 200% -35%, -160% 130%;
+    .title {
+        font-size: 3rem;
     }
-
-    .quizSettings {
-        width: 50%;
+    
+    .site-container {
+        padding: 2em;
+        gap: 2em;
+        background-position: 130% -15%, -10% 108%;
     }
-
-    select {
-        width: 150px;
-        font-size: 1rem;
+        .reset-btn {
+            font-size: 1rem;
+            top: 1.2em;
+            right: 1.2em;
+        }
+    .answers-btn {
+        margin-top: 1.4em;
     }
 }
 
-@media (min-width: 1300px) {
+/* For landscape tablets
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+}
+
+For small laptops
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+
+} */
+
+/* For large laptops to desktops */
+@media screen and (min-width: 1280px) {
     html {
-        font-size: 1.5rem;
-    }
+            font-size: 1.2rem;
+        }
 
-    .title-page,
-    .questions-page {
-        background-size: 40%;
-        background-position: 125% -150%, -30% 150%;
-    }
+        header a {
+            font-size: 1.4rem;
+        }
+    
+        .title {
+            font-size: 3rem;
+        }
+    
+        .site-container {
+            padding: 1.6em;
+            background-position: 112% -15%, -6% 105%;
+        }
 
-    .quizSettings {
-        width: 30%;
-    }
-
-    select {
-        width: 220px;
-        font-size: 1rem;
-    }
+        .question-container {
+            margin: 0.6em 0;
+            padding-bottom: 2em;
+        }
+    
+        .answers-btn {
+            margin-top: 1.4em;
+        }
 }
