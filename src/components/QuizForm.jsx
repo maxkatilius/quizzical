@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const TitlePage = (props) => {
+const QuizForm = (props) => {
+	const navigate = useNavigate();
+
 	const handleSettingsChange = (event) => {
 		const { name, value } = event.target;
 
@@ -15,20 +18,21 @@ const TitlePage = (props) => {
 
 	const handleFormSubmit = (event) => {
 		event.preventDefault();
-		props.changePage("questions-page");
+		console.log("form submitted");
+		navigate("/questions");
 	};
 
 	return (
 		<form
-			className="title-page"
+			className="quiz-form"
 			onChange={handleSettingsChange}
 			onSubmit={handleFormSubmit}
 		>
 			<h1 className="title">Quizzical</h1>
-			<h3 className="subtitle">Let's get quizzical baby!</h3>
+			<h3 className="subtitle">Put on your thinking cap, bitch!</h3>
 
-			<div className="quizSettings">
-				<div className="selectContainer">
+			<div className="quiz-settings">
+				<div className="select-container">
 					<label htmlFor="numOfQuestions">Number of Questions:</label>
 					<select
 						id="numOfQuestions"
@@ -47,8 +51,7 @@ const TitlePage = (props) => {
 						<option value="10">10</option>
 					</select>
 				</div>
-
-				<div className="selectContainer">
+				<div className="select-container">
 					<label htmlFor="difficulty">Difficulty:</label>
 					<select id="difficulty" name="difficulty">
 						<option value="">Any Difficulty</option>
@@ -57,8 +60,7 @@ const TitlePage = (props) => {
 						<option value="hard">Hard</option>
 					</select>
 				</div>
-
-				<div className="selectContainer">
+				<div className="select-container">
 					<label htmlFor="category">Category:</label>
 					<select id="category" name="category">
 						<option value="">Any Category</option>
@@ -90,9 +92,9 @@ const TitlePage = (props) => {
 				</div>
 			</div>
 
-			<button className="start-btn btn">Start quiz</button>
+			<button className="btn start-btn">Start quiz</button>
 		</form>
 	);
 };
 
-export default TitlePage;
+export default QuizForm;

@@ -34,7 +34,7 @@ const Question = (props) => {
 	return (
 		<div className="question-container">
 			<h2 className="question-text">{props.question}</h2>
-			<div className="answers">{answersElements}</div>
+			<div className="answers-container">{answersElements}</div>
 		</div>
 	);
 };
