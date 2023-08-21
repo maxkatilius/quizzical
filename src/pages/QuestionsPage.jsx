@@ -133,6 +133,9 @@ const QuestionsPage = (props) => {
 						className="btn reset-btn"
 						onClick={() => {
 							resetGame();
+							props.changeNumOfQuestions("5");
+							props.changeDifficulty("");
+							props.changeCategory("");
 							navigate("/");
 						}}
 					>
