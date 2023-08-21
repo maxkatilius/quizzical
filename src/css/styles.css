@@ -22,8 +22,8 @@ body {
     url(../assets/images/blob-yellow.png),
     url(../assets/images/blob-blue.png);
     background-repeat: no-repeat;
-    background-size: auto, auto;
-    background-position: 400% -27%, -60% 115%;
+    /* background-size: auto, auto; */
+    background-position: 11em -7em, -7em 110%;
     background-attachment: fixed, fixed;
 }
 
@@ -230,66 +230,127 @@ button:disabled {
 ** MEDIA QUEIRES **
 ******************/
 
+/* For smaller phone screens */
+@media screen and (min-width: 375px) and (max-width: 400px) {
+    html {
+        font-size: 0.95rem;
+    }
+    form {
+        width: 88%;
+    }
+    .reset-btn {
+        font-size: 0.75rem;
+        top: 1.6em;
+    }
+}
+
 /* For portrait tablets */
 @media screen and (min-width: 600px) {
+    
+    .title {
+        font-size: 3rem;
+    }
+
+    .site-container {
+        padding: 2em;
+        gap: 2em;
+        background-position: 150% -25%, -18% 115%;
+    }
+
+    .questions-page {
+        width: 90%;
+    }
+
+    .reset-btn {
+        font-size: 0.9rem;
+        top: 1.6em;
+        right: 1.4em;
+    }
+
+    .answers-btn {
+        margin-top: 1em;
+    }
+}
+
+/* For landscape tablets */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
     html {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+    }
+    .site-container {
+        background-size: 75% 50%;
+        background-position: 200% -40%, -120% 150%;
+    }
+    .reset-btn {
+        right: 2.5em;
+    }
+} 
+
+/* For small laptops */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+    html {
+            font-size: 1.6rem;
+        }
+
+    header a {
+        font-size: 1.5rem;
     }
 
     .title {
         font-size: 3rem;
     }
-    
+
     .site-container {
-        padding: 2em;
-        gap: 2em;
-        background-position: 130% -15%, -10% 108%;
+        padding: 1.6em;
+        text-align: center;
+        background-size: 75% 50%;
+        background-position: 200% -40%, -120% 150%;
     }
-        .reset-btn {
-            font-size: 1rem;
-            top: 1.2em;
-            right: 1.2em;
-        }
+
+    .questions-page {
+        width: 88%;
+    }
+
+    .question-container {
+        margin: 0.6em 0;
+        padding-bottom: 2em;
+    }
+
     .answers-btn {
-        margin-top: 1.4em;
+        margin-top: 0.2em;
     }
 }
-
-/* For landscape tablets
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-
-}
-
-For small laptops
-@media screen and (min-width: 1024px) and (max-width: 1279px) {
-
-} */
 
 /* For large laptops to desktops */
 @media screen and (min-width: 1280px) {
     html {
-            font-size: 1.2rem;
-        }
-
-        header a {
             font-size: 1.4rem;
-        }
-    
-        .title {
-            font-size: 3rem;
-        }
-    
-        .site-container {
-            padding: 1.6em;
-            background-position: 112% -15%, -6% 105%;
-        }
+    }
 
-        .question-container {
-            margin: 0.6em 0;
-            padding-bottom: 2em;
-        }
-    
-        .answers-btn {
-            margin-top: 1.4em;
-        }
+    header a {
+        font-size: 1.4rem;
+    }
+
+    .title {
+        font-size: 2.6rem;
+    }
+
+    .site-container {
+        padding: 1.6em;
+        background-size: 40% 50%;
+        background-position: 120% -20%, -25% 150%;
+    }
+
+    .questions-page {
+        width: 88%;
+    }
+
+    .question-container {
+        margin: 0.6em 0;
+        padding-bottom: 2em;
+    }
+
+    .answers-btn {
+        margin-top: 0.2em;
+    }
 }
