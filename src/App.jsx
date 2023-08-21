@@ -42,6 +42,9 @@ const App = () => {
 								numOfQuestions={numOfQuestions}
 								difficulty={difficulty}
 								category={category}
+								changeNumOfQuestions={changeNumOfQuestions}
+								changeDifficulty={changeDifficulty}
+								changeCategory={changeCategory}
 							/>
 						}
 					/>
