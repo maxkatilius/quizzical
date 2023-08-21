@@ -55,6 +55,19 @@ const QuestionsPage = (props) => {
 		setIsGameOver(false);
 	};
 
+	const result = score / Number(props.numOfQuestions);
+	let resultMessage = "";
+
+	if (result >= 0.9) {
+		resultMessage = "Dayum Shawty!";
+	} else if (result >= 0.7) {
+		resultMessage = "Very Nice!";
+	} else if (result >= 0.5) {
+		resultMessage = "Nice!";
+	} else {
+		resultMessage = "Hit the books!";
+	}
+
 	const selectAnswer = (questionIndex, answerIndex) => {
 		setQuestions((prevQuestions) =>
 			prevQuestions.map((question, qIndex) => {
@@ -113,12 +126,12 @@ const QuestionsPage = (props) => {
 					{score !== null && (
 						<p className="score-text">
 							You scored {score}/{props.numOfQuestions} correct
-							answers
+							answers. {resultMessage}
 						</p>
 					)}
 					{isGameOver ? (
 						<button className="btn answers-btn" onClick={resetGame}>
-							Play Again
+							Retry
 						</button>
 					) : (
 						<button
