@@ -58,8 +58,8 @@ const QuestionsPage = (props) => {
 	const result = score / Number(props.numOfQuestions);
 	let resultMessage = "";
 
-	if (result >= 0.9) {
-		resultMessage = "Dayum Shawty!";
+	if (result >= 0.99) {
+		resultMessage = "Dayum!";
 	} else if (result >= 0.7) {
 		resultMessage = "Very Nice!";
 	} else if (result >= 0.5) {
