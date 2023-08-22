@@ -124,10 +124,13 @@ const QuestionsPage = (props) => {
 				))}
 				<div className="results-container">
 					{score !== null && (
-						<p className="score-text">
-							You scored {score}/{props.numOfQuestions} correct
-							answers. {resultMessage}
-						</p>
+						<>
+							<p className="score-text">
+								You scored {score}/{props.numOfQuestions}{" "}
+								correct answers.
+							</p>
+							<p className="feedback-text">{resultMessage}</p>
+						</>
 					)}
 					{isGameOver ? (
 						<button className="btn answers-btn" onClick={resetGame}>

@@ -23,7 +23,7 @@ body {
     url(../assets/images/blob-blue.png);
     background-repeat: no-repeat;
     /* background-size: auto, auto; */
-    background-position: 11em -7em, -7em 110%;
+    background-position: 14em -7em, -7em 110%;
     background-attachment: fixed, fixed;
 }
 
@@ -129,7 +129,7 @@ button:disabled {
 }
 
 .answers-btn {
-    padding: 1.4em 2em;
+    padding: 1.4em 2.2em;
     margin-top: 0.8em;
     font-size: 1rem;
 }
@@ -221,9 +221,9 @@ button:disabled {
     align-items: center;
 }
 
-.score-text {
-    margin: 0.3em 0;
-    font-size: 1.2rem;
+.score-text, 
+.feedback-text {
+    font-size: 1.1rem;
 }
 
 /******************
