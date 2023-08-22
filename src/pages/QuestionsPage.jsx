@@ -67,7 +67,7 @@ const QuestionsPage = (props) => {
 	} else if (result >= 0.3) {
 		resultMessage = "I've seen rocks make better decisions!";
 	} else {
-		resultMessage = "You cooked it hard";
+		resultMessage = "You cooked it hard.";
 	}
 
 	const selectAnswer = (questionIndex, answerIndex) => {
